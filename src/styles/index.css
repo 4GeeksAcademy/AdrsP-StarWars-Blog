@@ -1,3 +1,20 @@
 /* 
     General Styles
 */
+.charScroll{
+  width: 80%;
+  aspect-ratio: 2/1;
+  padding: 0 50px;
+  margin: auto;
+  border: solid black 2px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+}
+
+.carta{
+    scroll-snap-align: none start;
+    scroll-margin-inline: 80px;
+    height: 80%
+}
