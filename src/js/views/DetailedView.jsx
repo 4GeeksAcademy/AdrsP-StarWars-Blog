@@ -1,22 +1,30 @@
 import React from "react";
 
-export const DetailedView = () => {
+export const DetailedView = (props) => {
     return (
-        <div className="Container" >
-            <div className="card mb-3" style="max-width: 540px;">
-                <div className="row g-0">
-                    <div className="col-md-4">
-                        <img src="..." className="img-fluid rounded-start" alt="..." />
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
+        <div className="container" >
+            <div className="img-texto" >
+                <img src="..." class="rounded float-start" />
+                <p>texto descriptivo</p>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     )
 }
