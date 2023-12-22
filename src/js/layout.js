@@ -5,7 +5,7 @@ import injectContext from "./store/appContext";
 
 
 import { StarWarNavbar } from "./component/StarWarNavbar.jsx"
-import { DetailedView } from "./views/DetailedView.jsx";
+import { DetailedViewPerson } from "./views/DetailedViewPerson.jsx";
 import { HomeView } from "./views/HomeView.jsx";
 
 //create your first component
@@ -20,7 +20,7 @@ const Layout = () => {
 				<StarWarNavbar />
 				<Routes>
 					<Route path="/" element={<HomeView />} />
-					<Route path="/detailedView" element={<DetailedView />} />
+					<Route path="/detailedViewPerson/:id" element={<DetailedViewPerson />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

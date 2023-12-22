@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const StarWarNavbar = () => {
+
+    const { store, actions } = useContext(Context)
+    const [favoritesList, SetFavoritesList] = useState(null)
+
+
     return (
         <nav className="navbar">
             <div class="container">
@@ -13,9 +19,9 @@ export const StarWarNavbar = () => {
                         Favoritos
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
-                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                        {(store.favorites).map((item, index) => (
+                            <li><a class="dropdown-item" href="#">{item}</a></li>
+                        ))}
                     </ul>
                 </div>
             </div>
