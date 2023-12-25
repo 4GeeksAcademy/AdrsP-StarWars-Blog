@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import injectContext from "./store/appContext";
 
-
-import { StarWarNavbar } from "./component/StarWarNavbar.jsx"
+import { StarWarNavbar } from "./component/StarWarNavbar.jsx";
 import { DetailedViewPerson } from "./views/DetailedViewPerson.jsx";
+import { DetailedViewPlanet } from "./views/DetailedViewPlanet.jsx"
 import { HomeView } from "./views/HomeView.jsx";
 
 //create your first component
@@ -21,6 +21,7 @@ const Layout = () => {
 				<Routes>
 					<Route path="/" element={<HomeView />} />
 					<Route path="/detailedViewPerson/:id" element={<DetailedViewPerson />} />
+					<Route path="/detailedViewPlanet/:id" element={<DetailedViewPlanet />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

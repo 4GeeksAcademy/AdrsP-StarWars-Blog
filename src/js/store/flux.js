@@ -5,9 +5,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			person: {
 			},
+			planets:{
+			},
+			planet:{
+			},
 			favorites: [
-
-			]
+			],
 		},
 		actions: {
 			getPeople: async function () {
@@ -30,11 +33,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return data;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
+					throw error;
+				}
+			},
+			getPlanets: async function () {
+				try {
+					const respuesta = await fetch('https://www.swapi.tech/api/planets');
+					const datos = await respuesta.json();
+					setStore({ planets: datos })
+					return datos;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
 					throw error; // O manejar el error de otra manera
 				}
 			},
-			addFavorite: (url) => {
-				favorites.push(url)
+			getPlanetInfo: async function (id) {
+				try {
+					const respuesta = await fetch('https://www.swapi.tech/api/planets/' + id);
+					const data = await respuesta.json()
+					setStore({ planet: data })
+					console.log('https://www.swapi.tech/api/planets/' + id)
+					return data;
+				} catch (error) {
+					console.error('Error al obtener datos:', error);
+					throw error;
+				}
+			},
+			addFavorite: (data) => {
+				setStore({favorites: data})
 			},
 			deleteFavorite: (i) => {
 				favorites.splice(i - 1, 1)

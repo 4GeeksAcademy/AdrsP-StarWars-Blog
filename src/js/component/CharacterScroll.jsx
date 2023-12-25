@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Card from "./Card.jsx";
 import { Context } from "../store/appContext.js";
-import propTypes from "prop-types";
 
 export const CharacterScroll = () => {
     const [peopleList, setPeopleList] = useState(null)
@@ -21,7 +20,7 @@ export const CharacterScroll = () => {
             <h2>Character</h2>
             <div className="d-flex flex-row overflow-scroll" >
                 {peopleList && peopleList.map((item, index) => (
-                    <Card id={item.uid} name={item.name} url={item.url} />
+                    <Card key={index} id={item.uid} name={item.name} url={item.url} />
                 ))}
             </div>
         </div>
