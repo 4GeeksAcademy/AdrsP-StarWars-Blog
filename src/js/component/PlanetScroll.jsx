@@ -10,7 +10,7 @@ export const PlanetScroll = () => {
     useEffect(() => {
         async function aux() {
             await actions.getPlanets()
-            setPlanetList(store.planets.results)
+            setPlanetList(store.planets)
         }
         aux()
     }, []);
@@ -20,7 +20,7 @@ export const PlanetScroll = () => {
             <h2>Planet</h2>
             <div className="d-flex flex-row overflow-scroll" >
                 {planetList && planetList.map((item, index) => (
-                    <CardPlanet key={index} id={item.uid} name={item.name} url={item.url} />
+                    <CardPlanet key={index} id={index + 1} name={item.name} url={item.url} />
                 ))}
             </div>
         </div>

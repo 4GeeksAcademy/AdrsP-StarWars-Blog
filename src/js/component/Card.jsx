@@ -16,18 +16,17 @@ const Card = (props) => {
         }
         else {
             SetFondo("regular")
-            actions.deleteFavorite(props.id)
+            actions.addFavorite(props.name)
             console.log(store.favorites)
         }
     }
 
-
     return (
         <div className="card" style={{ width: "18rem", flex: "none", margin: "10px" }}>
-            <img className="card-img-top" src="https://fastly.picsum.photos/id/56/400/200.jpg?hmac=jHNwIYldybq3p_VuNe3mq3F5doFoeRaC1HQ0oQB7dRM" />
+            <img className="card-img-top" src={"https://starwars-visualguide.com/assets/img/characters/" + props.id + ".jpg"} />
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">{props.url}</p>
+                <p className="card-text"> Gender: {props.gender}</p>
                 <div className="d-flex justify-content-between">
                     <Link to={`/detailedViewPerson/${props.id}`} className="btn btn-primary">View Details!</Link>
                     <button onClick={() => changefondo()} className="btn btn-light" >

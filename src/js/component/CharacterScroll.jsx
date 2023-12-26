@@ -10,7 +10,7 @@ export const CharacterScroll = () => {
     useEffect(() => {
         async function aux() {
             await actions.getPeople()
-            setPeopleList(store.people.results)
+            setPeopleList(store.people)
         }
         aux()
     }, []);
@@ -20,7 +20,7 @@ export const CharacterScroll = () => {
             <h2>Character</h2>
             <div className="d-flex flex-row overflow-scroll" >
                 {peopleList && peopleList.map((item, index) => (
-                    <Card key={index} id={item.uid} name={item.name} url={item.url} />
+                    <Card key={index} id={index + 1} name={item.name} gender={item.gender} />
                 ))}
             </div>
         </div>

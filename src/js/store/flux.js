@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -5,9 +7,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			person: {
 			},
-			planets:{
+			planets: {
 			},
-			planet:{
+			planet: {
 			},
 			favorites: [
 			],
@@ -15,9 +17,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			getPeople: async function () {
 				try {
-					const respuesta = await fetch('https://www.swapi.tech/api/people');
+					const respuesta = await fetch('https://swapi.dev/api/people');
 					const datos = await respuesta.json();
-					setStore({ people: datos })
+					console.log(datos.results)
+					setStore({ people: datos.results })
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
@@ -29,7 +32,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const respuesta = await fetch('https://www.swapi.tech/api/people/' + id);
 					const data = await respuesta.json()
 					setStore({ person: data })
-					console.log('https://www.swapi.tech/api/people/' + id)
 					return data;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
@@ -38,9 +40,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getPlanets: async function () {
 				try {
-					const respuesta = await fetch('https://www.swapi.tech/api/planets');
+					const respuesta = await fetch('https://swapi.dev/api/planets/');
 					const datos = await respuesta.json();
-					setStore({ planets: datos })
+					setStore({ planets: datos.results })
 					return datos;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
@@ -52,7 +54,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const respuesta = await fetch('https://www.swapi.tech/api/planets/' + id);
 					const data = await respuesta.json()
 					setStore({ planet: data })
-					console.log('https://www.swapi.tech/api/planets/' + id)
 					return data;
 				} catch (error) {
 					console.error('Error al obtener datos:', error);
@@ -60,11 +61,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			addFavorite: (data) => {
-				setStore({favorites: data})
+				const store = getStore()
+				if (store.favorites.includes(data)) {
+					// Lo borra
+					let AuxArray = []
+					AuxArray = store.favorites.filter((elem) => elem !== data)
+					setStore({ favorites: AuxArray })
+				}
+				else {
+					setStore({ favorites: [...store.favorites, data] }) //esto concatena la data nueva, con la data almacenada en el store
+				}
 			},
-			deleteFavorite: (i) => {
-				favorites.splice(i - 1, 1)
-			}
 		},
 	}
 }

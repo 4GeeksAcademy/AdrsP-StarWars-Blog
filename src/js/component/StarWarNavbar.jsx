@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const StarWarNavbar = () => {
 
     const { store, actions } = useContext(Context)
-    const [favoritesList, SetFavoritesList] = useState(store.favorites)
+    //const [favoritesList, SetFavoritesList] = useState(store.favorites)
 
 
     return (
@@ -19,8 +19,10 @@ export const StarWarNavbar = () => {
                         Favoritos
                     </button>
                     <ul className="dropdown-menu">
-                        {favoritesList.map((item, index) => (
-                            <li><a className="dropdown-item" href="#">{item}</a></li>
+                        {store.favorites.map((item, index) => (
+                            <li key={index}>
+                                <a className="dropdown-item">{item}</a>
+                            </li>
                         ))}
                     </ul>
                 </div>
